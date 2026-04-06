@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYREC | AI-Powered 4K Documentary Production</title>
+    <meta name="description" content="Academic-grade research meets cinematic 4K documentaries. 24h delivery, 100% original content. Built for creators who demand depth.">
+    <meta name="theme-color" content="#050505">
+    <link rel="canonical" href="https://zyrec.ai">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --card-bg: #111111;
+            --accent: #007aff;
+            --accent-glow: rgba(0, 122, 255, 0.3);
+            --text-p: #a0a0a0;
+            --text-h: #ffffff;
+            --border: #222222;
+            --gradient: linear-gradient(135deg, #0a0a0a 0%, #151515 50%, #050505 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-h);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Navigation */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .logo { 
+            font-weight: 800; font-size: 1.5rem; 
+            letter-spacing: 3px; color: var(--accent);
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            display: flex; gap: 2rem;
+        }
+        .nav-links a { 
+            color: var(--text-p); text-decoration: none; 
+            font-size: 0.9rem; font-weight: 500;
+            transition: 0.3s; position: relative;
+        }
+        .nav-links a:hover, .nav-links a.active { 
+            color: var(--accent); 
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0;
+            width: 0; height: 2px; background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        .hamburger {
+            display: none; flex-direction: column; gap: 4px; cursor: pointer;
+        }
+        .hamburger span {
+            width: 25px; height: 3px; background: var(--text-p);
+            transition: 0.3s; border-radius: 2px;
+        }
+
+        /* Hero Section - Enhanced */
+        .hero {
+            min-height: 100vh; padding: 0 5%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0,122,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0,122,255,0.06) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0%,100%{transform:translateY(0) scale(1);}
+            33%{transform:translateY(-30px) scale(1.1);}
+            66%{transform:translateY(-10px) scale(0.95);}
+        }
+        
+        .hero h1 { 
+            font-size: clamp(3rem, 8vw, 5.5rem); 
+            line-height: 1.1; margin-bottom: 1.5rem; 
+            font-weight: 800; position: relative; z-index: 2;
+            background: linear-gradient(135deg, var(--text-h) 0%, var(--accent) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p { 
+            font-size: clamp(1.1rem, 3vw, 1.3rem); 
+            color: var(--text-p); max-width: 700px; 
+            margin-bottom: 3rem; line-height: 1.7; z-index: 2;
+        }
+        
+        .btn {
+            padding: 1.2rem 3rem; font-size: 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, #0056cc 100%);
+            color: white; text-decoration: none; font-weight: 700;
+            border-radius: 12px; position: relative; z-index: 2;
+            box-shadow: 0 8px 32px var(--accent-glow);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: none; cursor: pointer;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%; background: rgba(255,255,255,0.2);
+            transition: left 0.5s;
+        }
+        .btn:hover::before { left: 100%; }
+        .btn:hover { 
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 20px 40px var(--accent-glow);
+        }
+        .btn.secondary {
+            background: transparent; border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn.secondary:hover { background: var(--accent); color: white; }
+
+        /* Stats */
+        .stats {
+            display: flex; justify-content: space-around; padding: 6rem 5%;
+            background: var(--gradient); border-top: 1px solid var(--border);
+            gap: 2rem;
+        }
+        .stat-item { 
+            text-align: center; opacity: 0; transform: translateY(30px);
+            animation: slideUp 0.8s forwards;
+        }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stat-item h2 { 
+            color: var(--accent); font-size: clamp(2.5rem, 8vw, 4rem); 
+            font-weight: 800; margin-bottom: 0.5rem;
+        }
+        .stat-item p { 
+            color: var(--text-p); font-size: 0.85rem; 
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 500;
+        }
+
+        /* Sections */
+        .section-title { 
+            text-align: center; margin: 8rem 0 4rem; 
+            font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800;
+            position: relative;
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: -20px; left: 50%;
+            transform: translateX(-50%); width: 80px; height: 3px;
+            background: var(--accent); border-radius: 2px;
+        }
+        
+        .grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2.5rem; padding: 0 5% 6rem; max-width: 1400px; margin: 0 auto;
+        }
+        .card {
+            background: var(--card-bg); padding: 3.5rem 2.5rem;
+            border-radius: 20px; border: 1px solid var(--border);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative; overflow: hidden;
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 4px; background: var(--accent);
+            transform: scaleX(0); transition: transform 0.4s ease;
+        }
+        .card:hover::before { transform: scaleX(1); }
+        .card:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-15px) rotateX(2deg);
+            box-shadow: 0 30px 60px rgba(0,122,255,0.15);
+        }
+        .card h3 { margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 700; }
+        .card p { color: var(--text-p); font-size: 1rem; line-height: 1.8; }
+
+        /* Case Study */
+        .case-study {
+            margin: 0 5% 8rem; padding: 5rem;
+            background: var(--gradient); border-radius: 24px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            border: 1px solid var(--border); max-width: 1400px; margin-inline: auto;
+        }
+        .cs-content h4 {
+            color: var(--accent); text-transform: uppercase;
+            font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1rem;
+        }
+        .cs-content h2 { font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 800; }
+        .cs-content p { color: var(--text-p); margin: 2rem 0; line-height: 1.8; }
+        .cs-link {
+            color: var(--accent); text-decoration: none; 
+            font-weight: 700; font-size: 1.1rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .cs-visual {
+            background: linear-gradient(135deg, #222 0%, #333 100%);
+            height: 320px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-p); font-weight: 700; font-size: 1.1rem;
+            position: relative; overflow: hidden;
+        }
+        .cs-visual::before {
+            content: '▶'; position: absolute; font-size: 3rem;
+            color: var(--accent); opacity: 0.3;
+        }
+
+        /* Pricing */
+        .pricing { 
+            display: flex; gap: 2.5rem; padding: 0 5% 8rem; 
+            flex-wrap: wrap; justify-content: center; max-width: 1400px; margin: 0 auto;
+        }
+        .price-card {
+            flex: 1; min-width: 340px; max-width: 400px;
+            background: var(--card-bg); padding: 4rem 3rem;
+            border-radius: 24px; border: 1px solid var(--border);
+            text-align: center; transition: all 0.5s ease;
+            position: relative; overflow: hidden;
+        }
+        .price-card.featured { 
+            border: 2px solid var(--accent); 
+            transform: scale(1.05) translateY(-20px);
+            box-shadow: 0 40px 80px rgba(0,122,255,0.2);
+        }
+        .price-card.featured::before {
+            content: 'POPULAR'; position: absolute; top: 20px; right: 20px;
+            background: var(--accent); color: white; padding: 0.5rem 1rem;
+            font-size: 0.75rem; font-weight: 700; border-radius: 20px;
+            letter-spacing: 1px;
+        }
+        .price-card h3 { margin-bottom: 1rem; font-size: 1.4rem; }
+        .price-card h2 { 
+            font-size: clamp(2.5rem, 10vw, 4rem); 
+            margin: 1rem 0 2rem; font-weight: 800;
+        }
+        .price-card.featured h3 { color: var(--accent); }
+        .price-card ul { list-style: none; margin-bottom: 3rem; }
+        .price-card li { 
+            padding: 1rem 0; border-bottom: 1px solid #222;
+            color: var(--text-p); position: relative; padding-left: 2rem;
+        }
+        .price-card li::before {
+            content: '✓'; position: absolute; left: 0; color: var(--accent);
+            font-weight: bold; font-size: 1.2rem;
+        }
+        .price-card li:last-child { border-bottom: none; }
+
+        /* Contact */
+        .contact { 
+            padding: 8rem 5%; background: var(--gradient); 
+            text-align: center; max-width: 1400px; margin: 0 auto 4rem;
+            border-radius: 24px; border: 1px solid var(--border);
+        }
+        .contact h2 { margin-bottom: 3rem; font-size: 2.5rem; }
+        form { 
+            max-width: 700px; margin: 0 auto; 
+            display: grid; gap: 1.5rem;
+        }
+        input, textarea {
+            padding: 1.5rem; background: rgba(17,17,17,0.8);
+            border: 2px solid var(--border); color: white;
+            border-radius: 12px; width: 100%; font-size: 1rem;
+            font-family: inherit; transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus { 
+            outline: none; border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+        textarea { resize: vertical; min-height: 140px; }
+
+        /* Footer */
+        footer { 
+            padding: 4rem 5%; text-align: center; 
+            border-top: 1px solid var(--border); 
+            color: var(--text-p); font-size: 0.9rem;
+            background: var(--bg);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: fixed; top: 100%; left: 0; width: 100%;
+                background: rgba(5,5,5,0.98); backdrop-filter: blur(20px);
+                flex-direction: column; padding: 2rem; gap: 1.5rem;
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: flex; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px,6px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+            
+            .stats { flex-direction: column; padding: 4rem 5%; gap: 2rem; }
+            .case-study { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 2rem; margin-bottom: 4rem; }
+            .pricing { flex-direction: column; align-items: center; }
+            .hero { padding: 0 5% 2rem; min-height: 100vh; }
+            .grid { grid-template-columns: 1fr; padding: 0 5% 4rem; }
+        }
+
+        @media (max-width: 480px) {
+            .stats, .pricing, .case-study { padding-left: 2rem; padding-right: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="scrollToTop()">ZYREC</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#services" onclick="closeMobileMenu()">Services</a>
+            <a href="#work" onclick="closeMobileMenu()">Our Work</a>
+            <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+            <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Long-Form Stories,<br>Built by Intelligence.</h1>
+        <p>We take your raw idea, conduct academic-grade research, and produce cinematic 4K documentaries that rival human production houses.</p>
+        <a href="#contact" class="btn">BOOK A DEMO</a>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item"><h2>24h</h2><p>Average Delivery</p></div>
+        <div class="stat
